@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+The MIT License (MIT)
+
+Copyright (c) 2015 Matt Okeson-Harlow, grephead.com, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Client / Employee Maps</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/offcanvas.css" rel="stylesheet">
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Client / Employee Maps</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="editor.php">Edit</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+
+    <div class="container-fluid">
+
+    <div class="row">
+		<div class="col-md-9">
+			<div id="googleMap" style="width:100%;height:600px;"></div>
+		</div><!--/col-md-9 -->
+		<div class='col-md-3'>
+            <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingABC'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseABC' aria-expanded='false' aria-controls='collapseABC'>ABC</a>
+                        </h4>
+                    </div><!--/headingABC -->
+                    <div id='collapseABC' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingABC'>
+                        <div class='panel-body'>
+                            <ul id="abc_marker_list" class="list-group"></ul>
+                        </div><!--/panel-body -->
+                    </div><!--collapseABC -->
+                </div><!--/panel-default -->
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingDEF'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseDEF' aria-expanded='false' aria-controls='collapseDEF'>DEF</a>
+                        </h4>
+                    </div><!--/headingDEF -->
+                    <div id='collapseDEF' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingDEF'>
+                        <div class='panel-body'>
+                            <ul id="def_marker_list" class="list-group"></ul>
+                        </div><!--/panel-body -->
+                    </div><!--collapseDEF -->
+                </div><!--/panel-default -->
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingGHI'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseGHI' aria-expanded='false' aria-controls='collapseGHI'>GHI</a>
+                        </h4>
+                    </div><!--/headingGHI -->
+                    <div id='collapseGHI' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingGHI'>
+                        <div class='panel-body'>
+                            <ul id="ghi_marker_list" class="list-group"></ul>
+                        </div><!--/panel-body -->
+                    </div><!--collapseGHI -->
+                </div><!--/panel-default -->
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingJKL'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseJKL' aria-expanded='false' aria-controls='collapseJKL'>JKL</a>
+                        </h4>
+                    </div><!--/headingJKL -->
+                    <div id='collapseJKL' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingJKL'>
+                        <div class='panel-body'>
+                            <ul id="jkl_marker_list" class="list-group"></ul>
+                        </div><!--/panel-body -->
+                    </div><!--collapseJKL -->
+                </div><!--/panel-default -->
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingMNO'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseMNO' aria-expanded='false' aria-controls='collapseMNO'>MNO</a>
+                        </h4>
+                    </div><!--/headingMNO -->
+                    <div id='collapseMNO' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingMNO'>
+                        <div class='panel-body'>
+                            <ul id="mno_marker_list" class="list-group"></ul>
+                        </div><!--/panel-body -->
+                    </div><!--collapseMNO -->
+                </div><!--/panel-default -->
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingPQR'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapsePQR' aria-expanded='false' aria-controls='collapsePQR'>PQR</a>
+                        </h4>
+                    </div><!--/headingPQR -->
+                    <div id='collapsePQR' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingPQR'>
+                        <div class='panel-body'>
+                            <ul id="pqr_marker_list" class="list-group"></ul>
+                        </div><!--/panel-body -->
+                    </div><!--collapsePQR -->
+                </div><!--/panel-default -->
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingSTU'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseSTU' aria-expanded='false' aria-controls='collapseSTU'>STU</a>
+                        </h4>
+                    </div><!--/headingSTU -->
+                    <div id='collapseSTU' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingSTU'>
+                        <div class='panel-body'>
+                            <ul id="stu_marker_list" class="list-group"></ul>
+                        </div><!--/panel-body -->
+                    </div><!--collapseSTU -->
+                </div><!--/panel-default -->
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingVWX'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseVWX' aria-expanded='false' aria-controls='collapseVWX'>VWX</a>
+                        </h4>
+                    </div><!--/headingVWX -->
+                    <div id='collapseVWX' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingVWX'>
+                        <div class='panel-body'>
+                            <ul id="vwx_marker_list" class="list-group"></ul>
+                        </div><!--/panel-body -->
+                    </div><!--collapseVWX -->
+                </div><!--/panel-default -->
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingYZ'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseYZ' aria-expanded='false' aria-controls='collapseYZ'>YZ</a>
+                        </h4>
+                    </div><!--/headingYZ -->
+                    <div id='collapseYZ' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingYZ'>
+                        <div class='panel-body'>
+                            <ul id="yz_marker_list" class="list-group"></ul>
+                        </div><!--/panel-body -->
+                    </div><!--collapseYZ -->
+                </div><!--/panel-default -->
+                </div><!--/panel-group -->
+            </div><!--/col-md-3 -->
+		</div><!--/row-->
+		<hr>
+
+      <footer>
+        <p>&copy; grephead.com, LLC 2015 :: <a href='LICENSE'>License</a>
+      </footer>
+
+    </div><!--/.container-->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src='js/jquery-1.11.3.min.js'></script>    
+        <script src='bootstrap/js/bootstrap.min.js'></script>
+        <script src='http://maps.googleapis.com/maps/api/js'></script>
+        <script src='js/maps.js'></script>
+    </body>
+</html>

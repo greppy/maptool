@@ -1,0 +1,4 @@
+[
+    { "table" : "employee", "icon" : "icons/green-dot.png" },
+    { "table" : "clients",  "icon" : "icons/blue-dot.png" }
+]
