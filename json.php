@@ -22,7 +22,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-
 require 'geocoder.php';
 
 if ( $_REQUEST['table'] === 'employee' or $_REQUEST['table'] === 'clients' ) {
@@ -37,7 +36,7 @@ if ( $_REQUEST['table'] === 'employee' or $_REQUEST['table'] === 'clients' ) {
             'lon'       => $loc['lon'],
             'address'   => $entry['address'],
             'name'      => $name,
-            'last_name' =>  $entry['last_name']
+            'last_name' => $entry['last_name']
         );
     }
     $json = json_encode( $output );
